@@ -3,7 +3,7 @@ Experimental Development Environment for Newbies, ou Environnement de Développe
 
 Il a pour but d'être utilisé en complémentarité avec git, notamment pour gérer l'exploration de plusieurs directions en simultanée, et la possibilité de tester très rapidement, en sauvegardant les résultats, des configurations non finalisées qui n'ont pas vocation à êtrer gittées.
 
-## Fonctionnalités
+## Fonctionnalités
 
 - Lancement d'une expérimentation, dans un dossier dédié, avec une copie des scripts utilisés
 - Interface avec git : une branche par expérimentation
