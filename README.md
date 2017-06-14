@@ -10,3 +10,13 @@ Il a pour but d'être utilisé en complémentarité avec git, notamment pour gé
 - Annotation d'expérimentation : Invalide (error), Dépassée, Valide, avec commentaires et descriptions
 - Recherche simplifiée
 - Archivage
+
+## expator sh 
+
+```
+expator.sh [nom de l'experience en camelCase] 
+
+# exemple 
+expator.sh monExperience
+```
+
