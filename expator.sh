@@ -1,6 +1,23 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+#TODO: 
+# - Gérer les entrées pour choisir la bonne fonction. 
+# - Se documenter pour faire un code propre ici. 
+# - Réfléchir au choix technologique pour coder : python, bash, go, autre ? 
+# - Go serait intéressant pour apprendre un nouveau langage et avoir de la bouteille pour 
+# embeter mayeul :P 
+
+# FONCTIONS: 
+# - init [nomProjet] : Permet d'initialiser un dossier. Fonctionnalité de création de dossier automatique. 
+# - run/launch [Path du fichier à run] [arguments de ce fichier] : 
+
+# Idees:
+# - .eden_run_history : Je propose de faire un dossier .eden_history (ou fichier) qui permette de se souvenir
+# de tous les run lancés. Ca ou un fichier qui se met à chaque run mais qui sera plus chiant à aller chercher. 
+# (ou les deux)
 
 # We could just use uuid or dbus-uuidgen
+
 function uuidfunction()
 {
     local N B T
@@ -32,6 +49,7 @@ function uuidfunction()
 
     echo
 }
+
 ID=`uuidfunction`
 DATE=`date +%Y-%m-%d`
 if test $# -eq 1

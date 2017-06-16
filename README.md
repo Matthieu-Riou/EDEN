@@ -3,6 +3,12 @@ Experimental Development Environment for Newbies, ou Environnement de Développe
 
 Il a pour but d'être utilisé en complémentarité avec git, notamment pour gérer l'exploration de plusieurs directions en simultanée, et la possibilité de tester très rapidement, en sauvegardant les résultats, des configurations non finalisées qui n'ont pas vocation à êtrer gittées.
 
+## TODO : 
+- Voir dans le fichier expator.sh
+- Spécifier la nomenclature : expérimentation, run, ... 
+- Ma proposition : ou initialise un projet et crée des freeze (freeze Statement) 
+- Spécifier dans un README l'architecture décidée en brainstorming. (pour un projet, on a quels dossiers. Où est-ce qu'on met les freeze/run etc ...)
+
 ## Fonctionnalités
 
 - Lancement d'une expérimentation, dans un dossier dédié, avec une copie des scripts utilisés
