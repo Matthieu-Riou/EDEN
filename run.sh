@@ -44,13 +44,13 @@ function uuidfunction()
 
 if [ $# -eq 1 ]
 then
-    cd $EDEN_DIR/runs
+    cd $EDEN_DIR/runs/$EDEN_RUN_DIR
 
     id=`uuidfunction`
     xp=$1
     date=`date +%Y-%m-%d`
 
-    dir=$date"_"$xp"_"$id
+    dir=`echo "$EDEN_RUN_NAME" | sed -e "s/ID/$id/g" | sed -e "s/XP/$xp/g" | sed -e "s/DATE/$date/g"`
 
     if [ -d "$dir" ] 
     then 
