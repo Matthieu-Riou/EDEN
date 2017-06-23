@@ -35,5 +35,5 @@ eden_run [nom_du_run] [parametres]
 eden_config [option] [valeur (optionnelle)]
 ```
 
-Avant de lancer un run, n'oublier pas de configurer l'option run.cm, indiquant la commande de lancement du run.
+Avant de lancer un run, n'oublier pas de configurer l'option run.cmd, indiquant la commande de lancement du run.
 
