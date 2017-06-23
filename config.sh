@@ -18,15 +18,19 @@ then
         run.name)
         cat $EDEN_DIR/.eden.cfg | grep "EDEN_RUN_NAME" | cut -f 2 -d "="
         ;;
+        run.cmd)
+        cat $EDEN_DIR/.eden.cfg | grep "EDEN_RUN_CMD" | cut -f 2 -d "=" | sed "s/\"//g"
+        ;;
         *)
         ;;
     esac
 fi
 
-if [[ $# -eq 2 ]]
+if [[ $# -gt 1 ]]
 then
     param="$1"
-    value="$2"
+    shift
+    value="$@"
     err=""
 
     case $param in
@@ -39,6 +43,9 @@ then
         ;;
         run.name)
         ERROR=$(sed -i "s/EDEN_RUN_NAME=.*/EDEN_RUN_NAME=$value/" $EDEN_DIR/.eden.cfg 2>&1)
+        ;;
+        run.cmd)
+        ERROR=$(sed -i "s|EDEN_RUN_CMD=.*|EDEN_RUN_CMD=\"$value\"|" $EDEN_DIR/.eden.cfg 2>&1)
         ;;
         *)
         ;;

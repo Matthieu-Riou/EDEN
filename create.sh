@@ -16,7 +16,7 @@ then
     mkdir $dir/scripts
     mkdir $dir/runs
 
-    echo "EDEN_RUN=\"echo No run command\"" >> $dir/.eden.cfg
+    echo "EDEN_RUN_CMD=\"echo No run command\"" >> $dir/.eden.cfg
     echo "EDEN_RUN_DIR=" >> $dir/.eden.cfg
     echo "EDEN_RUN_NAME=DATE"_"XP"_"ID" >> $dir/.eden.cfg
 

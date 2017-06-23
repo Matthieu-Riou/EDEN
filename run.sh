@@ -66,7 +66,7 @@ then
 
     cd $dir/scripts
 
-    $EDEN_RUN
+    $EDEN_RUN_CMD
 else
     echo "Missing arguments : eden_run [runname]" 1>&2
     exit 1
