@@ -1,6 +1,6 @@
 #!/bin/bash
 
-EDEN_DIR=`eden_load`
+EDEN_DIR=`eden_env`
 if [ "$EDEN_DIR" = "" ]
 then
     echo "No EDEN evironnement founded" 1>&2
