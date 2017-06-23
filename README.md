@@ -4,7 +4,6 @@ Experimental Development Environment for Newbies, ou Environnement de Développe
 Il a pour but d'être utilisé en complémentarité avec git, notamment pour gérer l'exploration de plusieurs directions en simultanée, et la possibilité de tester très rapidement, en sauvegardant les résultats, des configurations non finalisées qui n'ont pas vocation à êtrer gittées.
 
 ## TODO : 
-- Voir dans le fichier expator.sh
 - Spécifier la nomenclature : expérimentation, run, ... 
 - Ma proposition : ou initialise un projet et crée des freeze (freeze Statement) 
 - Spécifier dans un README l'architecture décidée en brainstorming. (pour un projet, on a quels dossiers. Où est-ce qu'on met les freeze/run etc ...)
@@ -17,12 +16,24 @@ Il a pour but d'être utilisé en complémentarité avec git, notamment pour gé
 - Recherche simplifiée
 - Archivage
 
-## expator sh 
+## Installation
 
 ```
-expator.sh [nom de l'experience en camelCase] 
-
-# exemple 
-expator.sh monExperience
+install.sh #(en sudo)
 ```
+
+## Utilisation
+
+```
+# Intialiser un projet
+eden_init [nom_du_projet]
+
+# Lancer un run
+eden_run [nom_du_run] [parametres]
+
+# Configure les options du projet
+eden_config [option] [valeur (optionnelle)]
+```
+
+Avant de lancer un run, n'oublier pas de configurer l'option run.cm, indiquant la commande de lancement du run.
 
