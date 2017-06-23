@@ -1,4 +1,4 @@
-#!/bin/bashcd 
+#!/bin/bash
 
 EDEN_DIR=`eden_env`
 if [ "$EDEN_DIR" = "" ]
@@ -42,13 +42,15 @@ function uuidfunction()
 }
 
 
-if [ $# -eq 1 ]
+if [ $# -gt 1 ]
 then
     cd $EDEN_DIR/runs/$EDEN_RUN_DIR
 
     id=`uuidfunction`
-    xp=$1
     date=`date +%Y-%m-%d`
+    xp=$1
+    shift
+    params="$@"
 
     dir=`echo "$EDEN_RUN_NAME" | sed -e "s/ID/$id/g" | sed -e "s/XP/$xp/g" | sed -e "s/DATE/$date/g"`
 
@@ -66,7 +68,7 @@ then
 
     cd $dir/scripts
 
-    $EDEN_RUN_CMD
+    $EDEN_RUN_CMD $params
 else
     echo "Missing arguments : eden_run [runname]" 1>&2
     exit 1
