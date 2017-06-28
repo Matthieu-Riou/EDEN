@@ -16,8 +16,10 @@ then
     mkdir $dir/scripts
     mkdir $dir/runs
 
-    echo "EDEN_RUN_CMD=\"echo No run command\"" >> $dir/.eden.cfg
-    echo "EDEN_RUN_DIR=" >> $dir/.eden.cfg
-    echo "EDEN_RUN_NAME=DATE"_"XP"_"ID" >> $dir/.eden.cfg
-
+    if [ ! -f ~/.edenconfig ]
+    then
+        cp /etc/edenconfig ~/.edenconfig
+    fi
+    
+    cp ~/.edenconfig $dir/.eden.cfg
 fi

@@ -1,13 +1,17 @@
 _eden_config()
 {
-    local cur prev opts
+    local cur prev pre_opts opts
     COMPREPLY=()
     cur="${COMP_WORDS[COMP_CWORD]}"
     prev="${COMP_WORDS[COMP_CWORD-1]}"
+    pre_opts="--local --global --system"
     opts="run.cmd run.name run.dir"
 
-    if [[ ${cur} == * ]] ; then
-        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+    if [[ "${cur}" == --* ]]; then
+        COMPREPLY=( $(compgen -W "${pre_opts}" -- "${cur}") )
+        return 0
+    elif [[ "${cur}" == * ]] ; then
+        COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
         return 0
     fi
 }

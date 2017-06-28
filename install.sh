@@ -10,3 +10,6 @@ cp config.sh /usr/bin/eden_config
 chmod a+x /usr/bin/eden_config
 
 cp bash_completion /etc/bash_completion.d/eden
+cp edenconfig /etc/edenconfig
+
+
