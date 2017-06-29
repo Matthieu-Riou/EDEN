@@ -11,6 +11,7 @@ then
     fi
 
     mkdir $dir
+    mkdir $dir/.eden
     mkdir $dir/notes
     mkdir $dir/data
     mkdir $dir/scripts
@@ -21,5 +22,5 @@ then
         cp /etc/edenconfig ~/.edenconfig
     fi
     
-    cp ~/.edenconfig $dir/.eden.cfg
+    cp ~/.edenconfig $dir/.eden/edenconfig
 fi

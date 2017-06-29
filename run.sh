@@ -6,9 +6,10 @@ then
     echo "No EDEN evironnement founded" 1>&2
     exit 1
 else
-    source $EDEN_DIR/.eden.cfg
+    source $EDEN_DIR/.eden/edenconfig
 fi
 
+#TODO : generer id sur le hash des fichier (comme git)
 function uuidfunction()
 {
     local N B T
@@ -42,9 +43,8 @@ function uuidfunction()
 }
 
 
-if [ $# -gt 1 ]
+if [ $# -ge 1 ]
 then
-    cd $EDEN_DIR/runs/$EDEN_RUN_DIR
 
     id=`uuidfunction`
     date=`date +%Y-%m-%d`
@@ -52,21 +52,36 @@ then
     shift
     params="$@"
 
-    dir=`echo "$EDEN_RUN_NAME" | sed -e "s/ID/$id/g" | sed -e "s/XP/$xp/g" | sed -e "s/DATE/$date/g"`
 
-    if [ -d "$dir" ] 
+    if [ -d $id ]
+    then
+        echo "ERROR: Directory $id already exists. Collision on id generation function" 1>&2
+        exit 1
+    fi
+
+    mkdir $EDEN_DIR/.eden/$id
+    mkdir $EDEN_DIR/.eden/$id/notes
+    mkdir $EDEN_DIR/.eden/$id/results
+    ln -s $EDEN_DIR/data $EDEN_DIR/.eden/$id/data
+    cp -R $EDEN_DIR/scripts $EDEN_DIR/.eden/$id/scripts
+    
+    echo "ID=$id" >> $EDEN_DIR/.eden/$id/.eden_parameters
+    echo "DATE=$date" >> $EDEN_DIR/.eden/$id/.eden_parameters
+    echo "NAME=$xp" >> $EDEN_DIR/.eden/$id/.eden_parameters
+    echo "CMD=$EDEN_RUN_CMD $params" >> $EDEN_DIR/.eden/$id/.eden_parameters
+    
+    dir=$date"_"$xp"_"$id
+
+    if [ -d "$EDEN_DIR/runs/$dir" ] 
     then 
         echo "ERROR: Directory $dir already exists." 1>&2
         exit 1
     fi
 
-    mkdir $dir
-    mkdir $dir/notes
-    mkdir $dir/results
-    ln -s $EDEN_DIR/data $dir/data
-    cp -R $EDEN_DIR/scripts $dir/scripts
-
-    cd $dir/scripts
+    ln -s $EDEN_DIR/.eden/$id $EDEN_DIR/runs/$dir
+    
+    
+    cd $EDEN_DIR/.eden/$id/scripts
 
     $EDEN_RUN_CMD $params
 else

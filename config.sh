@@ -15,7 +15,7 @@ then
 fi
 
 
-config_file=$EDEN_DIR/.eden.cfg
+config_file=$EDEN_DIR/.eden/edenconfig
 if [[ "$1" == --* ]]
 then
     option="$1"
@@ -23,7 +23,7 @@ then
 
     case $option in
         --local)
-        config_file=$EDEN_DIR/.eden.cfg
+        config_file=$EDEN_DIR/.eden/edenconfig
         ;;
         --global)
         config_file=~/.edenconfig
@@ -42,8 +42,6 @@ then
     esac
 fi
 
-echo $#
-
 if [[ $# -eq 1 ]]
 then
     param="$1"
@@ -51,9 +49,6 @@ then
     case $param in
         run.dir)
         cat $config_file | grep "EDEN_RUN_DIR" | cut -f 2 -d "="
-        ;;
-        run.name)
-        cat $config_file | grep "EDEN_RUN_NAME" | cut -f 2 -d "="
         ;;
         run.cmd)
         cat $config_file | grep "EDEN_RUN_CMD" | cut -f 2 -d "=" | sed "s/\"//g"
@@ -77,9 +72,6 @@ then
         then
             mkdir -p $EDEN_DIR/runs/$value
         fi
-        ;;
-        run.name)
-        ERROR=$(sed -i "s/EDEN_RUN_NAME=.*/EDEN_RUN_NAME=$value/" $config_file 2>&1)
         ;;
         run.cmd)
         ERROR=$(sed -i "s|EDEN_RUN_CMD=.*|EDEN_RUN_CMD=\"$value\"|" $config_file 2>&1)

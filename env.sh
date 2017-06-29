@@ -3,7 +3,7 @@
 while [ "$PWD" != "/" ]
 do
     #echo "$PWD"
-    if [ -f ".eden.cfg" ]
+    if [ -d ".eden" ]
     then
         echo "$PWD"
         exit

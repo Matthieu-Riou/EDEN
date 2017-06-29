@@ -1,3 +1,2 @@
 EDEN_RUN_CMD="echo No run command"
 EDEN_RUN_DIR=
-EDEN_RUN_NAME=DATE"_"XP"_"ID

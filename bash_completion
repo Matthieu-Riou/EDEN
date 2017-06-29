@@ -5,7 +5,7 @@ _eden_config()
     cur="${COMP_WORDS[COMP_CWORD]}"
     prev="${COMP_WORDS[COMP_CWORD-1]}"
     pre_opts="--local --global --system"
-    opts="run.cmd run.name run.dir"
+    opts="run.cmd run.dir"
 
     if [[ "${cur}" == --* ]]; then
         COMPREPLY=( $(compgen -W "${pre_opts}" -- "${cur}") )
