@@ -7,8 +7,6 @@ then
     exit 1
 fi
 
-ls $EDEN_DIR/.eden
-
 declare -a menu
 i=1
 
@@ -29,4 +27,16 @@ done
 
 column=`resize | grep "COLUMNS=" | sed "s/COLUMNS=//" | sed "s/;//"`
 line=`resize | grep "LINES=" | sed "s/LINES=//" | sed "s/;//"`
-whiptail --title "Menu" --menu "Choisissez" $line $column 16 "${menu[@]}"
+selectID=$(whiptail --title "Menu" --menu "Choisissez" $line $column 16 "${menu[@]}" 3>&1 1>&2 2>&3)
+
+selectRun=($(ls $EDEN_DIR/.eden | grep $selectID))
+
+if [ ${#selectRun[@]} -gt 1 ]
+then
+    #TODO : handle collision (with option to setup shortid length ?)
+    echo "Collision uuid error"
+    exit 1
+fi
+
+cd $EDEN_DIR/.eden/${selectRun[0]}
+exec bash
